@@ -29,3 +29,5 @@ u_\alpha\\
 $$
 The ellipsoidal approximation doesn't work for this 6D model. The reason (my guess) is that the linearized 6D model is not controllable. Revise it into 5D and don't set bounds on $vx_r$ and $vy_r$, and that way we can find control invariant set.
 
+Also, this model has many coupled terms, and finding a good approximation of the pre set is for systems with couple terms is still on the TODO list.
+
