@@ -1,12 +1,11 @@
-function dyn = get_nonlinear_6d_dyn
+function dyn = get_nonlinear_5d_dyn
 
-	% State is [ xr yr thr vxr vyr w ]'
+	% State is [ xr yr thr vr w ]'
     %
-	% vxr + yr * w_hat
-    % vyr - xr * w_hat
+	% -v_bar + (v_bar + vr)*cos(thr) + yr * w_hat
+    % (v_bar + vr)*sin(thr) - xr * w_hat
     % w - w_hat
-    % -vyr * w + ua * cos(thr) + vyr * w_hat
-    % (vxr + v_bar) * w + ua * sin(thr) - (vxr + v_bar) * w_hat + vd * (w-w_hat)
+    % u_a
     % u_alpha
 
 	v_bar = 10;
@@ -15,32 +14,29 @@ function dyn = get_nonlinear_6d_dyn
     yr_max = 1;
     thr_max = pi/4;
     
-    u_a = 5;
-    u_alpha = pi/6;
+    u_a = 2;
+    u_alpha = pi/12;
     
     w_hat_max = 0;
     vd = 0;
 
 	% Continuous dynamics
-    A=[0, 0, 0, 1, 0, 0;
-       0, 0, 0, 0, 1, 0;
-       0, 0, 0, 0, 0, 1;
-       0, 0, 0, 0, 0, 0;
-       0, 0, 0, 0, 0, v_bar;
-       0, 0, 0, 0, 0, 0];
+    A=[0, 0, 0, 1, 0;
+       0, 0, v_bar, 0, 0;
+       0, 0, 0, 0, 1;
+       0, 0, 0, 0, 0;
+       0, 0, 0, 0, 0];
 
     B=[0, 0;
        0, 0;
        0, 0;
        1, 0;
-       0, 0;
        0, 1];
 
     Em=[0, 0;
         0, 0;
        -1, 0;
         0, 0;
-       -v_bar, 0;
         0, 0];
 
     % Integrate dynamics
@@ -51,16 +47,16 @@ function dyn = get_nonlinear_6d_dyn
 %     Kd = zeros(4,1);
     Emd = integral_A * Em;
 %     Edd = integral(A_s, 0, dt, 'ArrayValued', true) * Ed;
-    Edd = eye(6);
+    Edd = eye(5);
 
 %     con.y_max = 0.9;
 %     con.nu_max = 10;
 %     con.psi_max = 5*pi/180;
 %     con.r_max = pi/6;
 
-    box.A = [1, 0, 0, 0, 0, 0;
-             0, 1, 0, 0, 0, 0;
-             0, 0, 1, 0, 0, 0;];
+    box.A = [1, 0, 0, 0, 0;
+             0, 1, 0, 0, 0;
+             0, 0, 1, 0, 0;];
     box.b = [xr_max;
              yr_max;
              thr_max];
@@ -73,11 +69,12 @@ function dyn = get_nonlinear_6d_dyn
                
     dyn.d_m = [w_hat_max;
                vd];
-    dyn.d_um = zeros(6,1);
-%     d_um = [con.dy_max;
-%             con.dnu_max;
-%             con.dpsi_max;
-%             con.dr_max];
+%     dyn.d_um = zeros(5,1);
+    dyn.d_um = [0.02;
+                0.02;
+                0.5/180*pi;
+                0.02;
+                0.5/180*pi;];
 
     option = [];
     
@@ -86,6 +83,7 @@ function dyn = get_nonlinear_6d_dyn
     dyn.B = Bd*diag(dyn.control);
     dyn.Em = Emd*diag(dyn.d_m);
     dyn.Ed = Edd*diag(dyn.d_um);
+    dyn.v_bar = v_bar;
     
 % 	for ellipsoidal control/disturbance set 
 %     dyn.B = inv((Bd*diag(control))^2);

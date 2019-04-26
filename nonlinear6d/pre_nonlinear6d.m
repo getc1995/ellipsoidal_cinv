@@ -21,6 +21,8 @@ function ellip = pre_nonlinear6d(ellip, dyn, d_m, d_um)
         set_disturbance = true;
     else
     %   Use input previewed disturbance
+    %   Warning!!!
+        error('Not implemented for preview cases!')
         Em = dyn.Em*d_m;
         set_disturbance = false;
     end
@@ -66,7 +68,7 @@ function ellip = pre_nonlinear6d(ellip, dyn, d_m, d_um)
         option.Ed_box = true;
     end
     
-    if ~all(Ed == 0)
+    if ~all(all(Ed == 0))
         if option.Ed_box
             E = intersect_offset_ia(E, Ed);
         else
@@ -74,7 +76,7 @@ function ellip = pre_nonlinear6d(ellip, dyn, d_m, d_um)
         end
     end
     
-    if ~all(B == 0)
+    if ~all(all(B == 0))
         if option.B_box
             E = union_offset_ia(E, B);
         else
@@ -82,7 +84,7 @@ function ellip = pre_nonlinear6d(ellip, dyn, d_m, d_um)
         end
     end
     
-    if ~all(Em == 0)
+    if ~all(all(Em == 0))
         if set_disturbance
             if option.Em_box
                 E = intersect_offset_ia(E, Em);

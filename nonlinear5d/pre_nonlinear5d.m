@@ -1,4 +1,4 @@
-function ellip = pre(ellip, dyn, d_m, d_um)
+function ellip = pre_nonlinear5d(ellip, dyn, d_m, d_um)
     E = ellip.E;
     c = ellip.c;
     
@@ -14,10 +14,15 @@ function ellip = pre(ellip, dyn, d_m, d_um)
     set_disturbance = true;
     if nargin < 3
     %   Use default d_m and assume worst case set disturbance
-        Em = dyn.Em*diag(dyn.d_m);
+        [E_error, err] = getdyn_error5d(E, dyn.control, dyn.d_m, dyn.v_bar);
+%         dyn.integral_A
+%         eig(dyn.integral_A)
+        Em = [dyn.Em*diag(dyn.d_m), dyn.integral_A * E_error * diag(err)];
         set_disturbance = true;
     else
     %   Use input previewed disturbance
+    %   Warning!!!
+        error('Not implemented for preview cases!')
         Em = dyn.Em*d_m;
         set_disturbance = false;
     end
