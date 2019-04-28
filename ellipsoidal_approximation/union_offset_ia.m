@@ -21,6 +21,17 @@ function E = union_offset_ia(E, vecs)
         offset = norm(vec);
         E = union_offset_unitball_ia(n, offset);
         
+%         figure
+%         grid on
+%         axis equal
+%         hold on
+%         xlim([-4, 4])
+%         ylim([-4, 4])
+%         plot_E(eye(n), 'k', [-offset; 0])
+%         plot_E(eye(n), 'k', [offset; 0])
+%         plot_E(E, 'r')
+%         tightplot('../figures/union_offset_ia/7');
+        
         % Get the transformation matrix
         % Each row vector is the direction
         % of the new axis

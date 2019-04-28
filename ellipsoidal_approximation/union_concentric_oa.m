@@ -18,4 +18,15 @@ function E = union_concentric_oa(E1, E2)
     [U, S, ~] = svd(E2);
     S = min(eye(n), S);
     E = T*U*S*U'*T';
+    
+%     figure(2)
+%     plot_E(E2, 'r')
+%     hold on
+%     plot_E(eye(n),'b')
+%     plot_E(U*S*U', 'k')
+%     grid on
+%     axis equal
+%     xlim([-4,4])
+%     ylim([-4,4])
+%     tightplot('../figures/union_concentric_oa/2');
 end

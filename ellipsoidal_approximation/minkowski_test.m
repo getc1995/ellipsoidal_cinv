@@ -1,6 +1,9 @@
 close all
 clear all
 
+% This is a file that tests minkowski sum/diff 
+% of two ellipsoids
+
 n = 3;
 
 Q1 = 10*(rand(n) - 0.5);

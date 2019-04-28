@@ -12,4 +12,9 @@ function E = union_offset_unitball_oa(n, d)
     b = 1+d*costheta;
 
     E = diag([1/a, 1/b*ones(1, n-1)]);
+%     plot([d, costheta+d], [0, sqrt(1-costheta^2)], 'k', 'LineWidth', 1.5)
+%     plot([0, d], [0, 0], 'k', 'LineWidth', 1.5)
+% 
+%     plot([0, -sqrt(a)], [0, 0], '-.b', 'LineWidth', 1.5)
+%     plot([0, 0], [0, -sqrt(b)], '-.b', 'LineWidth', 1.5)
 end

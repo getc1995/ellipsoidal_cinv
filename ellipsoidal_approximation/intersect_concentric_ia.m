@@ -18,4 +18,15 @@ function E = intersect_concentric_ia(E1, E2)
     [U, S, ~] = svd(E2);
     S = max(eye(n), S);
     E = T*U*S*U'*T';
+    
+%     figure(2)
+%     plot_E(E2, 'r')
+%     hold on
+%     plot_E(eye(n),'b')
+%     plot_E(U*S*U', 'k')
+%     grid on
+%     axis equal
+%     xlim([-4,4])
+%     ylim([-4,4])
+%     tightplot('../figures/intersect_concentric_ia/2');
 end

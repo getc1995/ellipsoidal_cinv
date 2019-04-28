@@ -23,6 +23,16 @@ function E = union_offset_oa(E, vecs)
         offset = norm(vec);
         E = union_offset_unitball_oa(n, offset);
 %         plot_E(E, 'g')
+%         figure
+%         grid on
+%         axis equal
+%         hold on
+%         xlim([-4, 4])
+%         ylim([-4, 4])
+%         plot_E(eye(n), 'r', [-offset; 0])
+%         plot_E(eye(n), 'r', [offset; 0])
+%         plot_E(E, 'k')
+%         tightplot('../figures/union_offset_oa/4');
         
         % Get the transformation matrix
         % Each row vector is the direction

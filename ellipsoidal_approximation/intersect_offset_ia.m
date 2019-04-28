@@ -26,7 +26,16 @@ function E = intersect_offset_ia(E, vecs)
         
         offset = norm(vec);
         E = intersect_offset_unitball_ia(n, offset);
-%         plot_E(E, 'g')
+%         figure
+%         grid on
+%         axis equal
+%         hold on
+%         xlim([-4, 4])
+%         ylim([-4, 4])
+%         plot_E(eye(n), 'k', [-offset; 0])
+%         plot_E(eye(n), 'k', [offset; 0])
+%         plot_E(E, 'r')
+%         tightplot('../figures/intersect_offset_ia/7');
         
         % Get the transformation matrix
         % Each row vector is the direction

@@ -20,6 +20,7 @@ function E = interval_intersect_unitball(a, b)
         E = eye(n);
         return 
     end
+
     % Get the transformation matrix
     % Each row vector is the direction
     % of the new axis
@@ -27,5 +28,20 @@ function E = interval_intersect_unitball(a, b)
 %     M_inv = inv(M);
     E = eye(n);
     E(1,1) = 1/b^2;
+    
+%     figure(2)
+%     hold on
+%     grid on
+%     axis equal
+%     y = -4:0.1:4;
+%     x = ones(length(y))*b;
+%     plot(x, y, 'b', 'LineWidth', 1.5)
+%     plot(-x, y, 'b', 'LineWidth', 1.5)
+%     plot_E(eye(2), 'r')
+%     plot_E(E, 'k')
+%     xlim([-4,4])
+%     ylim([-4,4])
+%     tightplot('../figures/polytope_intersect/2');
+    
     E = M'*E*M;
 end
