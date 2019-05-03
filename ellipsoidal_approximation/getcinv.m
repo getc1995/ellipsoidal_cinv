@@ -22,10 +22,7 @@ function ellip = getcinv(dyn, box, verbose, E_init)
         C.c = c;
 
 		i = i+1;
-%         if show_plot
-%             plot(V_prim)
-%             drawnow
-%         end
+        
         if verbose
             volume = 1/sqrt(det(C.E));
             disp(['iteration: ', num2str(i), ' volume: ', num2str(volume)])

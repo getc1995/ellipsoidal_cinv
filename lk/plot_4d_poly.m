@@ -5,6 +5,9 @@ function plot_4d_poly(C)
     xlabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
     ylabel('$\psi$', 'Interpreter', 'latex', 'FontSize', font)
     zlabel('$r$', 'Interpreter', 'latex', 'FontSize', font)
+    xlim([-20, 20])
+    ylim([-0.1, 0.1])
+    zlim([-5, 5])
     tightplot('../figures/lk/poly1');
 
     figure
@@ -12,6 +15,9 @@ function plot_4d_poly(C)
     xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
     ylabel('$\psi$', 'Interpreter', 'latex', 'FontSize', font)
     zlabel('$r$', 'Interpreter', 'latex', 'FontSize', font)
+    xlim([-1, 1])
+    ylim([-0.1, 0.1])
+    zlim([-5, 5])
     tightplot('../figures/lk/poly2');
 
     figure
@@ -19,6 +25,9 @@ function plot_4d_poly(C)
     xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
     ylabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
     zlabel('$r$', 'Interpreter', 'latex', 'FontSize', font)
+    xlim([-1, 1])
+    ylim([-30, 30])
+    zlim([-3, 3])
     tightplot('../figures/lk/poly3');
 
     figure
@@ -26,5 +35,8 @@ function plot_4d_poly(C)
     xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
     ylabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
     zlabel('$\psi$', 'Interpreter', 'latex', 'FontSize', font)
+    xlim([-1, 1])
+    ylim([-30, 30])
+    zlim([-0.1, 0.1])
     tightplot('../figures/lk/poly4');
 end

@@ -15,21 +15,33 @@ function plot_E_4d(E)
             xlabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
             ylabel('$\psi$', 'Interpreter', 'latex', 'FontSize', font)
             zlabel('$r$', 'Interpreter', 'latex', 'FontSize', font)
+            xlim([-20, 20])
+            ylim([-0.1, 0.1])
+            zlim([-5, 5])
             tightplot('../figures/lk/ellip1');
         elseif i == 2
             xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
             ylabel('$\psi$', 'Interpreter', 'latex', 'FontSize', font)
             zlabel('$r$', 'Interpreter', 'latex', 'FontSize', font)
+            xlim([-1, 1])
+            ylim([-0.1, 0.1])
+            zlim([-5, 5])
             tightplot('../figures/lk/ellip2');
         elseif i == 3
             xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
             ylabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
             zlabel('$r$', 'Interpreter', 'latex', 'FontSize', font)
+            xlim([-1, 1])
+            ylim([-30, 30])
+            zlim([-3, 3])
             tightplot('../figures/lk/ellip3');
         elseif i == 4
             xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
             ylabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
             zlabel('$\psi$', 'Interpreter', 'latex', 'FontSize', font)
+            xlim([-1, 1])
+            ylim([-30, 30])
+            zlim([-0.1, 0.1])
             tightplot('../figures/lk/ellip4');
         end
     end

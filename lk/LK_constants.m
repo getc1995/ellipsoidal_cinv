@@ -5,6 +5,8 @@ function con = LK_constants
 
 	% nominal speed
 	con.u0 = 10; %m/s
+    con.u_max = 12;
+    con.u_min = 10;
 
 	% Vehicle parameters
     con.m =1650 ; %kg
@@ -42,7 +44,7 @@ function con = LK_constants
 %     con.u_max = 30;
 %     con.u_min = 10;
     
-%     con.kappa = con.rd_max/con.u_max; % curvature
+    con.kappa = con.rd_max/con.u_max; % curvature
 
 %     con.F_yfmax = 15; Not used
 
