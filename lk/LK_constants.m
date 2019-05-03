@@ -4,7 +4,7 @@ function con = LK_constants
 	con.dt = 0.1;
 
 	% nominal speed
-	con.u0 = 5; %m/s
+	con.u0 = 10; %m/s
 
 	% Vehicle parameters
     con.m =1650 ; %kg

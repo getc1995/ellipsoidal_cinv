@@ -41,6 +41,7 @@ function steer_output = LK_qcqp(dyn, x0, s0, W,  ellip_list, rd_list)
 %     cvx_end
 % %     disp(x)
 %     disp(s)
+%     steer_output = s(2);
     
 %% LK qcqp
     n = 4+1; % dimension of state plus control
@@ -64,19 +65,21 @@ function steer_output = LK_qcqp(dyn, x0, s0, W,  ellip_list, rd_list)
     Aeq(1:n, 1:n) = eye(n);
     Beq(1:n) = [s0; x0;];
     ellip = [];
-    ellips = cell(1,T);
+    ellips = cell(1,1);
     for i = 2:T+1
         Aeq((i-1)*n+m+1:i*n, (i-1)*n+m+1:i*n) = eye(n-m);
         Aeq((i-1)*n+m+1:i*n, (i-2)*n+m+1:(i-1)*n) = -A;
         Aeq((i-1)*n+m+1:i*n, (i-1)*n+1:(i-1)*n+m) = -B;
         Beq((i-1)*n+m+1:i*n, 1) = Em*rd_list(i-1);
         
-        ellip_temp = ellip_list{i-1};
-        F = chol(ellip_temp.E);
-        ellip.Fc = F * ellip_temp.c;
-        ellip.F = zeros(n-m, n*(T+1));
-        ellip.F(:, (i-1)*n+m+1:i*n) = F;
-        ellips{i-1} = ellip;
+        if i == 2
+            ellip_temp = ellip_list{i-1};
+            F = chol(ellip_temp.E);
+            ellip.Fc = F * ellip_temp.c;
+            ellip.F = zeros(n-m, n*(T+1));
+            ellip.F(:, (i-1)*n+m+1:i*n) = F;
+            ellips{i-1} = ellip;
+        end
     end
 
     % Building inequality matrix based on constraints.

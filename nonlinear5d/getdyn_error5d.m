@@ -11,7 +11,6 @@ function [E_error, err] = getdyn_error5d(E, control, dm, v_bar)
     thr_max = extreme_value(E, 3);
     vr_max = extreme_value(E, 4);
     w_max = extreme_value(E, 5);
-    disp(vr_max)
     
     E_error = [1, 0;
                0, 1;

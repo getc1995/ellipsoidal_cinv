@@ -10,14 +10,19 @@ function dyn = get_nonlinear_5d_dyn
 
 	v_bar = 10;
     dt = 0.1;
-    xr_max = 1;
-    yr_max = 1;
+    xr_max = 0.2;
+    yr_max = 0.2;
     thr_max = pi/4;
     
-    u_a = 2;
-    u_alpha = pi/12;
+%     u_a = 4;
+%     u_alpha = 3;
+%     
+%     w_hat_max = 0.1;
     
-    w_hat_max = 0;
+    u_a = 1;
+    u_alpha = 3;
+    
+    w_hat_max = pi/120;
     vd = 0;
 
 	% Continuous dynamics
@@ -69,20 +74,20 @@ function dyn = get_nonlinear_5d_dyn
                
     dyn.d_m = [w_hat_max;
                vd];
-%     dyn.d_um = zeros(5,1);
-    dyn.d_um = [0.02;
-                0.02;
-                0.5/180*pi;
-                0.02;
-                0.5/180*pi;];
+    dyn.d_um = zeros(5,1);
+%     dyn.d_um = [0.01;
+%                 0.01;
+%                 0.1/180*pi;
+%                 0.01;
+%                 0.1/180*pi;];
 
     option = [];
     
     dyn.A = Ad;
 %     for box control/disturbance set
-    dyn.B = Bd*diag(dyn.control);
-    dyn.Em = Emd*diag(dyn.d_m);
-    dyn.Ed = Edd*diag(dyn.d_um);
+    dyn.B = Bd;
+    dyn.Em = Emd;
+    dyn.Ed = Edd;
     dyn.v_bar = v_bar;
     
 % 	for ellipsoidal control/disturbance set 

@@ -45,7 +45,7 @@ function dyn = get_LK_dyn_ellip(con)
     dyn.control = con.df_max;
     dyn.d_m = con.rd_max;
     dyn.d_um = zeros(4,1);
-%     d_um = [con.dy_max;
+%     dyn.d_um = [con.dy_max;
 %             con.dnu_max;
 %             con.dpsi_max;
 %             con.dr_max];
@@ -54,9 +54,9 @@ function dyn = get_LK_dyn_ellip(con)
     
     dyn.A = Ad;
 %     for box control/disturbance set
-    dyn.B = Bd*diag(dyn.control);
-    dyn.Em = Emd*diag(dyn.d_m);
-    dyn.Ed = Edd*diag(dyn.d_um);
+    dyn.B = Bd;
+    dyn.Em = Emd;
+    dyn.Ed = Edd;
     
 % 	for ellipsoidal control/disturbance set 
 %     dyn.B = inv((Bd*diag(control))^2);
