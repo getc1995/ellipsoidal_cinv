@@ -18,7 +18,7 @@ function plot_E_4d(E)
             xlim([-20, 20])
             ylim([-0.1, 0.1])
             zlim([-5, 5])
-            tightplot('../figures/lk/ellip1');
+%             tightplot('../figures/lk/ellip1');
         elseif i == 2
             xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
             ylabel('$\psi$', 'Interpreter', 'latex', 'FontSize', font)
@@ -26,7 +26,7 @@ function plot_E_4d(E)
             xlim([-1, 1])
             ylim([-0.1, 0.1])
             zlim([-5, 5])
-            tightplot('../figures/lk/ellip2');
+%             tightplot('../figures/lk/ellip2');
         elseif i == 3
             xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
             ylabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
@@ -34,7 +34,7 @@ function plot_E_4d(E)
             xlim([-1, 1])
             ylim([-30, 30])
             zlim([-3, 3])
-            tightplot('../figures/lk/ellip3');
+%             tightplot('../figures/lk/ellip3');
         elseif i == 4
             xlabel('$y$', 'Interpreter', 'latex', 'FontSize', font)
             ylabel('$v$', 'Interpreter', 'latex', 'FontSize', font)
@@ -42,7 +42,7 @@ function plot_E_4d(E)
             xlim([-1, 1])
             ylim([-30, 30])
             zlim([-0.1, 0.1])
-            tightplot('../figures/lk/ellip4');
+%             tightplot('../figures/lk/ellip4');
         end
     end
 end

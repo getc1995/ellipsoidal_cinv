@@ -14,7 +14,7 @@ dyn = get_LK_dyn_ellip(con);
 %          0, 0, 1, 0;];
 % box.b = [con.y_max;
 %          con.psi_max;];
-verbose = false;
+verbose = true;
 tic
 ellip = getcinv(dyn, dyn.box, verbose);
 time = toc
@@ -31,7 +31,7 @@ disp(['E volume: ', num2str(volume)])
 %     disp(['E volume: ', num2str(volume)])
 % end
 
-% plot_E_4d(ellip.E)
+plot_E_4d(ellip.E)
 
 
 T = 10000;
